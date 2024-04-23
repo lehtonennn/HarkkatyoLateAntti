@@ -1,82 +1,110 @@
 package com.example.harkkatyolateantti.fragments;
 
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.harkkatyolateantti.MunicipalityData;
+import com.example.harkkatyolateantti.MunicipalityDataRetriever;
+import com.example.harkkatyolateantti.MunicipalityDataManager;
 import com.example.harkkatyolateantti.R;
+import com.example.harkkatyolateantti.WeatherData;
+import com.example.harkkatyolateantti.WeatherDataManager;
+import com.example.harkkatyolateantti.WeatherDataRetriever;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ComparisonFragment extends Fragment {
 
-    private EditText editTextSearch;
     private TextView textViewKunta1Header;
     private TextView textViewKunta1Population;
-    private TextView textViewKunta1Area;
-    private TextView textViewKunta2Header;
-    private TextView textViewKunta2Population;
-    private TextView textViewKunta2Area;
-
+    private TextView textWeather1;
     public ComparisonFragment() {
-
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_comparison, container, false);
 
-
-        editTextSearch = rootView.findViewById(R.id.editTextSearch);
         textViewKunta1Header = rootView.findViewById(R.id.textViewKunta1Header);
         textViewKunta1Population = rootView.findViewById(R.id.textViewKunta1Population);
-        textViewKunta1Area = rootView.findViewById(R.id.textViewKunta1Area);
-        textViewKunta2Header = rootView.findViewById(R.id.textViewKunta2Header);
-        textViewKunta2Population = rootView.findViewById(R.id.textViewKunta2Population);
-        textViewKunta2Area = rootView.findViewById(R.id.textViewKunta2Area);
+        textWeather1 = rootView.findViewById(R.id.textWeather1);
 
+        String municipalityName = MunicipalityDataManager.getInstance().getMunicipalityName();
+        int population = MunicipalityDataManager.getInstance().getPopulation();
 
-        editTextSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        textViewKunta1Header.setText(municipalityName);
+        textViewKunta1Population.setText("Väkiluku: " + population);
+
+        WeatherData weatherData = WeatherDataManager.getInstance().getWeatherData();
+
+        if (weatherData != null) {
+            textWeather1.setText(
+                            "Sää nyt " + weatherData.getMain() + " (" + weatherData.getDescription() + ")\n" +
+                            "Lämpötila: " + weatherData.getTemperatureInCelsius() + "C°\n" +
+                            "Tuulennopeus: " + weatherData.getWindSpeed() +  "m/s\n"
+            );
+        } else {
+            return null;
+        }
+
+        EditText editTextSearch = rootView.findViewById(R.id.editTextSearch);
+        Button searchButton = rootView.findViewById(R.id.buttonSearch);
+        TextView textViewKunta2Header = rootView.findViewById(R.id.textViewKunta2Header);
+        TextView textViewKunta2Population = rootView.findViewById(R.id.textViewKunta2Population);
+        TextView textWeather2 = rootView.findViewById(R.id.textWeather2);
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
+            public void onClick(View v) {
+                String municipalityName = editTextSearch.getText().toString();
+                MunicipalityDataRetriever mr = new MunicipalityDataRetriever();
+                WeatherDataRetriever wr = new WeatherDataRetriever();
+                ExecutorService service = Executors.newSingleThreadExecutor();
+                service.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        MunicipalityData municipalityData = mr.getData(getContext(), municipalityName, true);
+                        WeatherData weatherData = wr.getWeatherData(municipalityName);
 
-                    performSearch(editTextSearch.getText().toString());
-                }
+                        if (municipalityData != null) {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    textViewKunta2Header.setText(municipalityName);
+                                    textViewKunta2Population.setText("Väkiluku: " + municipalityData.getPopulation());
+                                    textWeather2.setText("Sää nyt: " + weatherData.getMain() + " (" + weatherData.getDescription() + ")\n" +
+                                            "Lämpötila: " + weatherData.getTemperatureInCelsius() + "C°\n" +
+                                            "Tuulennopeus: " + weatherData.getWindSpeed() +  "m/s\n");
+                                }
+                            });
+                        } else {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getContext(), "Kuntaa ei löytynyt", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
 
         return rootView;
     }
-
-    private void performSearch(String query) {
-        String dummyJsonData = "{\"kunta1\": {\"nimi\": \"Helsinki\", \"väkiluku\": 655281, \"pinta-ala\": 715.49}, " +
-                "\"kunta2\": {\"nimi\": \"Espoo\", \"väkiluku\": 290445, \"pinta-ala\": 528.03}}";
-
-        try {
-            JSONObject jsonData = new JSONObject(dummyJsonData);
-
-
-            JSONObject kunta1 = jsonData.getJSONObject("kunta1");
-            textViewKunta1Header.setText(kunta1.getString("nimi"));
-            textViewKunta1Population.setText("Väkiluku: " + kunta1.getInt("väkiluku"));
-            textViewKunta1Area.setText("Pinta-ala: " + kunta1.getDouble("pinta-ala") + " km²");
-
-
-            JSONObject kunta2 = jsonData.getJSONObject("kunta2");
-            textViewKunta2Header.setText(kunta2.getString("nimi"));
-            textViewKunta2Population.setText("Väkiluku: " + kunta2.getInt("väkiluku"));
-            textViewKunta2Area.setText("Pinta-ala: " + kunta2.getDouble("pinta-ala") + " km²");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 }
+

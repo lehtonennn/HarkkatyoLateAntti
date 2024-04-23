@@ -8,7 +8,6 @@
     android:onClick="onFindBtnClick"
     tools:context=".MainActivity">
 
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
@@ -20,14 +19,16 @@
 
 
     <androidx.viewpager2.widget.ViewPager2
-    android:id="@+id/viewPager"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tabLayout"
-    app:layout_constraintVertical_bias="0.0"
-    tools:layout_editor_absoluteX="0dp">
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
     </androidx.viewpager2.widget.ViewPager2>
+
 
 
     <EditText
@@ -55,45 +56,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="258dp"
-        android:layout_height="72dp"
-        android:background="#386881"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="224dp"
-        android:layout_height="49dp"
-        android:background="#CAD3D8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599" />
-
-    <TextView
-        android:id="@+id/textLast5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Viimeksi haetut kunnat:"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
-
-
-
 
     <Button
         android:id="@+id/buttonSearchMunicipality"
@@ -111,7 +73,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </FrameLayout>
-    <!-- Add your list items here -->
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.harkkatyolateantti.fragments.BasicInformationFragment;
 import com.example.harkkatyolateantti.fragments.ComparisonFragment;
-import com.example.harkkatyolateantti.fragments.FragmentC;
-import com.example.harkkatyolateantti.fragments.FragmentD;
+import com.example.harkkatyolateantti.fragments.FragmentQuiz;
 
 public class TabPagerAdapter extends FragmentStateAdapter {
 
@@ -26,9 +25,7 @@ public class TabPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new ComparisonFragment();
             case 2:
-                return new FragmentC();
-            case 3:
-                return new FragmentD();
+                return new FragmentQuiz();
             default:
                 return null;
         }
@@ -36,6 +33,6 @@ public class TabPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 3;
     }
 }

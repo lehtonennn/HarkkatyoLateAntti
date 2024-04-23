@@ -5,7 +5,6 @@ import android.util.Log;
 public class MunicipalityDataManager {
     private static MunicipalityDataManager instance;
 
-    private static final String TAG = "MunicipalityDataManager";
     private String municipalityName;
     private int population;
 
@@ -25,12 +24,10 @@ public class MunicipalityDataManager {
     }
 
     public String getMunicipalityName() {
-        Log.d(TAG, "getMunicipalityName: " + municipalityName);
         return municipalityName;
     }
 
     public int getPopulation() {
-        Log.d(TAG, "getPopulation: " + population);
         return population;
     }
 }

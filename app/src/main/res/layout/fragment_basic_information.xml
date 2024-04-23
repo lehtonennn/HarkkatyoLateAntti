@@ -1,25 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
-    <Button
-        android:id="@+id/buttonWiki"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="108dp"
-        android:text="Wikipedia"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        app:layout_constraintVertical_bias="0.759"
-        tools:ignore="HardcodedText,UnknownIdInLayout" />
 
     <TextView
         android:id="@+id/textViewPopulation"
@@ -27,65 +10,72 @@
         android:layout_height="wrap_content"
         android:text="Väkiluku: "
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonWiki"
+        android:background="#E0E0E0"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598"
+        app:layout_constraintVertical_bias="0.387"
         tools:ignore="HardcodedText,VisualLintOverlap" />
 
     <TextView
         android:id="@+id/textViewMunicipalityName"
-        android:layout_width="116dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="112dp"
+        android:layout_width="206dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="140dp"
         android:text="Kunnan nimi"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,TextSizeCheck" />
+        android:textAlignment="center"
+        android:textSize="35sp"
+        android:background="#E0E0E0"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.497"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
-        android:id="@+id/textViewArea"
+        android:id="@+id/textViewPopulationDencity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        android:text="Pinta-ala: "
+        android:layout_marginTop="68dp"
+        android:text="Väestötiedot:"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMunicipalityName"
-        tools:ignore="HardcodedText" />
+        android:background="#E0E0E0"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.139"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textViewMunicipalityName"
+    tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textActualPopulation"
-        android:layout_width="149dp"
-        android:layout_height="29dp"
+        android:layout_width="151dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="52dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/buttonWiki"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMunicipalityName"
-        app:layout_constraintVertical_bias="0.463"
-        tools:ignore="HardcodedText" />
+        android:background="#E0E0E0"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.603"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.338"
+    tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/textActualArea"
-        android:layout_width="158dp"
-        android:layout_height="29dp"
+        android:id="@+id/textActualPopulationChange"
+        android:layout_width="223dp"
+        android:layout_height="121dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423"
-        tools:ignore="HardcodedText" />
+        android:background="#E0E0E0"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.84"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.532"
+    tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textWeather"
@@ -93,26 +83,27 @@
         android:layout_height="28dp"
         android:text="Sää:"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.512"
-        tools:ignore="HardcodedText,TextSizeCheck" />
+        android:background="#E0E0E0"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.13"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.596"
+    tools:ignore="HardcodedText,TextSizeCheck" />
 
     <TextView
         android:id="@+id/textActualWeather"
-        android:layout_width="162dp"
-        android:layout_height="26dp"
+        android:layout_width="224dp"
+        android:layout_height="190dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513"
-        tools:ignore="HardcodedText,TextSizeCheck" />
-
+        android:background="#E0E0E0"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.839"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.826"
+    tools:ignore="HardcodedText,TextSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.example.harkkatyolateantti;
 
 import android.content.Context;
-import android.util.Log;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -50,7 +49,6 @@ public class MunicipalityDataRetriever {
         String code = null;
 
 
-        code = null;
         code = municipalityCodes.get(municipality);
 
 
@@ -109,19 +107,18 @@ public class MunicipalityDataRetriever {
             if (!populationData.isEmpty()) {
                 MunicipalityData muniData = populationData.get(0);
                 muniData.setName(municipality);
-                Log.d("ANTTI ON VITUN HOMO", muniData.getYear() + " ja " + muniData.getPopulation());
             } else {
-                Log.d("ANTTI ON VITUN HOMO", "Dataa ei löytynyt vuodelle 2022");
             }
             MunicipalityData muniData = new MunicipalityData(year, population);
             muniData.setName(municipality);
 
             return muniData;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         return null;
     }
+
 }
+

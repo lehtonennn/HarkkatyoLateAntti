@@ -10,7 +10,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.harkkatyolateantti.fragments.BasicInformationFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -38,16 +37,13 @@ public class FragmentActivity extends AppCompatActivity {
                 (tab, position) -> {
                     switch (position) {
                         case 0:
-                            tab.setText("Basic Information");
+                            tab.setText("Perustiedot");
                             break;
                         case 1:
-                            tab.setText("Comparison");
+                            tab.setText("Vertailu");
                             break;
                         case 2:
-                            tab.setText("Higher Lower Game");
-                            break;
-                        case 3:
-                            tab.setText("Quiz");
+                            tab.setText("Visa");
                             break;
                         default:
                             break;

@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <Button
+        android:id="@+id/buttonSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vertaa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerKuntaNames" />
 
     <EditText
         android:id="@+id/editTextSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:hint="Hae verrattavaa kuntaa"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        tools:ignore="NotSibling" />
 
     <LinearLayout
         android:id="@+id/containerKuntaNames"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="409dp"
+        android:layout_height="272dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/editTextSearch"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextSearch">
 
         <LinearLayout
             android:id="@+id/containerKunta1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
-            android:background="@android:color/darker_gray">
+            android:background="@android:color/darker_gray"
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/textViewKunta1Header"
@@ -43,34 +55,33 @@
                 android:textStyle="bold" />
 
 
-
             <TextView
                 android:id="@+id/textViewKunta1Population"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kunnan 1 väkiluku: "
-                android:textSize="16sp"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:text="Väkiluku: "
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textViewKunta1Area"
+                android:id="@+id/textWeather1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kunnan 1 pinta-ala: "
-                android:textSize="16sp"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"
+                android:text="Sää: "
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/containerKunta2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:padding="8dp"
             android:background="@android:color/darker_gray"
-            android:layout_marginStart="16dp">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/textViewKunta2Header"
@@ -85,17 +96,17 @@
                 android:id="@+id/textViewKunta2Population"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kunnan 2 väkiluku: "
-                android:textSize="16sp"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:text="Väkiluku: "
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textViewKunta2Area"
+                android:id="@+id/textWeather2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kunnan 2 pinta-ala: "
-                android:textSize="16sp"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"
+                android:text="Sää: "
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -113,5 +124,7 @@
 
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
