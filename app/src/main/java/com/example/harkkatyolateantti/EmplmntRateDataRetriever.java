@@ -17,9 +17,6 @@ import java.util.HashMap;
 
 public class EmplmntRateDataRetriever {
     public ArrayList<EmplmntRateData> getData(Context context, String municipality){
-        System.out.println( "Hello World!" );
-
-
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode areas = null;
@@ -47,7 +44,8 @@ public class EmplmntRateDataRetriever {
             municipalityCodes.put(keys.get(i), values.get(i));
         }
 
-        String code = municipalityCodes.get(municipality);
+        String code = null;
+        code = municipalityCodes.get(municipality);
 
         try {
             URL url = new URL("https://pxdata.stat.fi:443/PxWeb/api/v1/fi/StatFin/tyokay/statfin_tyokay_pxt_115x.px");
@@ -73,15 +71,12 @@ public class EmplmntRateDataRetriever {
             }
 
             JsonNode EmploymentRateData = objectMapper.readTree(response.toString());
-
             ArrayList<String> population = new ArrayList<>();
 
             for (JsonNode node : EmploymentRateData.get("value")) {
                 population.add(node.asText());
             }
-
             ArrayList<EmplmntRateData> emplmntRateData = new ArrayList<>();
-
             for(int i = 0; i < population.size(); i++) {
                 emplmntRateData.add(new EmplmntRateData(Double.valueOf(population.get(i))));
             }

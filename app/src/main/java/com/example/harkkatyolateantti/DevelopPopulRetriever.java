@@ -19,7 +19,6 @@ public class DevelopPopulRetriever {
 
     public ArrayList<PopulDevelopData> getData(Context context, String municipality) {
 
-        System.out.println("Hello World!");
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode areas = null;
 
@@ -48,7 +47,8 @@ public class DevelopPopulRetriever {
             municipalityCodes.put(keys.get(i), values.get(i));
         }
 
-        String code = municipalityCodes.get(municipality);
+        String code = null;
+        code = municipalityCodes.get(municipality);
 
         try {
             URL url = new URL("https://pxdata.stat.fi:443/PxWeb/api/v1/fi/StatFin/synt/statfin_synt_pxt_12dy.px");
@@ -74,15 +74,12 @@ public class DevelopPopulRetriever {
             }
 
             JsonNode populDevelopData = objectMapper.readTree(response.toString());
-
             ArrayList<String> population = new ArrayList<>();
 
             for (JsonNode node : populDevelopData.get("value")) {
                 population.add(node.asText());
             }
-
             ArrayList<PopulDevelopData> populDataList = new ArrayList<>();
-
             for (int i = 0; i < population.size(); i++) {
                 populDataList.add(new PopulDevelopData(Integer.valueOf(population.get(i))));
             }
